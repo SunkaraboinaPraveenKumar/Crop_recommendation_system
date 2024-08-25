@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Crop Recommendation</title>
+
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="login">
+        <h1>Crop Recommendation Model</h1>
+        <form action="{{ url_for('predict') }}" method="post">
+            <input type="text" name="Nitrogen" placeholder="Nitrogen" required="required"/>
+            <input type="text" name="Phosphorous" placeholder="Phosphorous" required="required"/>
+            <input type="text" name="Potassium" placeholder="Potassium" required="required"/>
+            <input type="text" name="temperature" placeholder="Temperature" required="required"/>
+            <input type="text" name="humidity" placeholder="Humidity" required="required"/>
+            <input type="text" name="pH" placeholder="pH" required="required"/>
+            <input type="text" name="rainfall" placeholder="Rainfall" required="required"/>
+
+            <button type="submit" class="btn btn-primary btn-block btn-large mt-3">Predict</button>
+        </form>
+
+        <h1 id="pred" style="margin-top:20px">
+            {{ prediction_text }}
+        </h1>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
